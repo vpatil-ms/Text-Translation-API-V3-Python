@@ -9,6 +9,10 @@
 
 import os, requests, uuid, json
 
+#load environment variables from .env file
+from dotenv import load_dotenv
+load_dotenv()
+
 key_var_name = 'TRANSLATOR_TEXT_SUBSCRIPTION_KEY'
 if not key_var_name in os.environ:
     raise Exception('Please set/export the environment variable: {}'.format(key_var_name))
@@ -26,8 +30,10 @@ endpoint = os.environ[endpoint_var_name]
 
 # If you encounter any issues with the base_url or path, make sure
 # that you are using the latest endpoint: https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate
+
+
 path = '/translate?api-version=3.0'
-params = '&from=en&to=de&to=it&to=zh-Hans'
+params = '&from=en&to=de&to=it&to=zh-Hans&to=fr'
 constructed_url = endpoint + path + params
 
 headers = {
